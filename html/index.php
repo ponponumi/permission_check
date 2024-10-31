@@ -9,3 +9,6 @@ $get = new Get();
 for ($i = -1; $i <= 8; $i++){
     var_dump($get->numToAlphabet($i));
 }
+
+var_dump($get->dataGet(__FILE__));                  // ファイルがある
+var_dump($get->dataGet(__DIR__ . '/hello.txt'));    // ファイルがない
