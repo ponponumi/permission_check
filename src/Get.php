@@ -103,4 +103,19 @@ class Get
 
         return $result;
     }
+
+    public function myIdGet()
+    {
+        // 自分のIDを取得する
+        $myId = posix_getuid();
+        $myMeta = posix_getpwuid($myId);
+
+        $result["myId"] = $myId;
+
+        if($myMeta !== false){
+            $result["myName"] = $myMeta["name"];
+        }
+
+        return $result;
+    }
 }
