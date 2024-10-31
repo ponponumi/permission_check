@@ -104,9 +104,9 @@ class Get
         return $result;
     }
 
-    public function myIdGet()
+    public function myGet()
     {
-        // 自分のIDを取得する
+        // 自分のデータを取得する
         $myId = posix_getuid();
         $myMeta = posix_getpwuid($myId);
 
