@@ -56,7 +56,7 @@ class Get
                 $result = "";
 
                 foreach($list as $item){
-                    $result .= self::numToAlphabet($item);
+                    $result .= $this->numToAlphabet($item);
                 }
             }
         }
