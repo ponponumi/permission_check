@@ -63,4 +63,32 @@ class Get
 
         return $result;
     }
+
+    public function ownerGet(string $path)
+    {
+        // ファイルまたはフォルダの所有者と所有グループを取得する
+        // ファイルまたはフォルダがない場合は空の配列を返す
+        $result = [];
+
+        if(file_exists($path)){
+            // ファイルまたはフォルダがあれば
+            $result["ownerId"] = fileowner($path);
+            $result["groupId"] = filegroup($path);
+
+            $ownerMeta = posix_getpwuid($result["ownerId"]);
+            $groupMeta = posix_getpwuid($result["groupId"]);
+            $result["ownerName"] = "";
+            $result["groupName"] = "";
+
+            if($ownerMeta !== false){
+                $result["ownerName"] = $ownerMeta["name"];
+            }
+
+            if($groupMeta !== false){
+                $result["groupName"] = $groupMeta["name"];
+            }
+        }
+
+        return $result;
+    }
 }
