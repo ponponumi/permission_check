@@ -25,4 +25,16 @@ class Get
             return $this->numToalphabetData[0];
         }
     }
+
+    public function alphabetToNum(string $permission,$default=null)
+    {
+        // 一致しない場合はデフォルトを返す
+        $result = array_search($permission, $this->numToalphabetData);
+
+        if($result !== false){
+            return $result;
+        }
+
+        return $default;
+    }
 }
