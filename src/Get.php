@@ -89,4 +89,18 @@ class Get
 
         return $result;
     }
+
+    public function dataGet(string $path)
+    {
+        // 全ての情報を取得する
+        $result = $this->filePermissionGet($path);
+
+        if($result !== []){
+            // 配列が空でなければ
+            $owner = $this->ownerGet($path);
+            $result = array_merge($result, $owner);
+        }
+
+        return $result;
+    }
 }
