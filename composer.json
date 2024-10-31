@@ -1,0 +1,17 @@
+{
+    "name": "ponponumi/permission_check",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Ponponumi\\PermissionCheck\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "ponponumi",
+            "email": "ponponumi@gmail.com"
+        }
+    ],
+    "require": {}
+}
