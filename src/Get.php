@@ -38,26 +38,24 @@ class Get
         return $default;
     }
 
-    public function filePermissionGet(string $path,$alphabetMode=false)
+    public function filePermissionGet(string $path)
     {
         // ファイルまたはフォルダからパーミッションを検索する
-        // ファイルまたはフォルダがない場合は空文字を返す
-        $result = "";
+        // ファイルまたはフォルダがない場合は空の配列を返す
+        $result = [];
 
         if(file_exists($path)){
             // ファイルまたはフォルダがあれば
             $perms = fileperms($path);
             $permOct = sprintf('%o',$perms);
-            $result = substr($permOct,-3);
+            $result["num"] = substr($permOct,-3);
 
-            if($alphabetMode){
-                // アルファベットモードが有効であれば
-                $list = str_split($result);
-                $result = "";
+            // アルファベットを求める
+            $list = str_split($result["num"]);
+            $result["alphabet"] = "";
 
-                foreach($list as $item){
-                    $result .= $this->numToAlphabet($item);
-                }
+            foreach($list as $item){
+                $result["alphabet"] .= $this->numToAlphabet($item);
             }
         }
 
